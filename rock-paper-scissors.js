@@ -13,3 +13,17 @@ function getComputerChoice() {
   } 
 }
 console.log(getComputerChoice());
+
+function getHumanChoice() {
+  choice = prompt("Enter your choice!", "rock");
+  if (choice === "rock") {
+    return("rock");
+  } else if (choice ==="paper") {
+    return("paper");
+  } else if (choice === "scissors") {
+    return("scissors");
+  } else {
+    console.log("Not an option!");
+  }
+}
+console.log(getHumanChoice());
