@@ -1,11 +1,15 @@
 function getComputerChoice() {
-  choice = Math.random();
-
+  const choice = Math.random();
+  let computerMove;
   if (choice <= 1/3) {
-    return "rock";
+    computerMove = "rock";
+    return(computerMove);
   } else if (choice <= 2/3) {
-    return "paper";
+    computerMove = "paper";
+    return(computerMove);
   } else {
-    return "scissors";
-  }
+    computerMove = "scissors";
+    return(computerMove);
+  } 
 }
+console.log(getComputerChoice());
