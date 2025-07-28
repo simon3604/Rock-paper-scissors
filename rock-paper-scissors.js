@@ -12,18 +12,52 @@ function getComputerChoice() {
     return(computerMove);
   } 
 }
-console.log(getComputerChoice());
+
 
 function getHumanChoice() {
   choice = prompt("Enter your choice!", "rock");
-  if (choice === "rock") {
-    return("rock");
-  } else if (choice ==="paper") {
-    return("paper");
-  } else if (choice === "scissors") {
-    return("scissors");
-  } else {
-    console.log("Not an option!");
-  }
+  return(choice);
 }
-console.log(getHumanChoice());
+
+
+let humanScore = 0;
+let computerScore = 0;
+
+
+function playRound() {
+  let humanSelection = getHumanChoice();
+  let computerSelection = getComputerChoice();
+  console.log(`You picked ${humanSelection}, Computer picked ${computerSelection}! 
+    ${getWinner(humanSelection, computerSelection)} 
+    Score: ${humanScore} - ${computerScore}`);
+}
+function getWinner(humanChoice, computerChoice) {
+  humanChoice = humanChoice.toLowerCase();
+  let result;
+  
+  if (humanChoice === "rock" && computerChoice === "paper") {
+    result = "You lose!";
+  } else if (humanChoice === "rock" && computerChoice === "scissors") {
+    result = "You win!";
+  } else if (humanChoice === "paper" && computerChoice === "rock") {
+    result = "You win!";
+  } else if (humanChoice === "paper" && computerChoice === "scissors") {
+    result = "You lose!";
+  } else if (humanChoice === "scissors" && computerChoice === "rock") {
+    result = "You lose!"; 
+  } else if (humanChoice === "scissors" && computerChoice === "paper") {
+    result = "You win!";
+  } else if (humanChoice === computerChoice) {
+    result = "Tie!";
+  } else {
+    console.log("Not a valid answer!");
+  }
+
+  if (result === "You win!") {
+    humanScore++;
+  } else if (result === "You lose!") {
+    computerScore++;
+  }
+  return(result);
+}
+
