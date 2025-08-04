@@ -14,23 +14,39 @@ function getComputerChoice() {
 }
 
 
-function getHumanChoice() {
-  choice = prompt("Enter your choice!", "rock");
-  return(choice);
-}
+let move;
+const btnEl = document.querySelectorAll("button");
+btnEl.forEach((button) => {
+  button.addEventListener("click", function (e) {
+    move = e.target.id;
+    if (humanScore !== 5 && computerScore !== 5) {
+      playRound();
+    }
+    if (humanScore === 5 || computerScore === 5) {
+      showWin();
+    } 
+  })
+})
+
+
+
 
 
 let humanScore = 0;
 let computerScore = 0;
+const outputEl = document.querySelector("#output");
+
 
 
 function playRound() {
-  let humanSelection = getHumanChoice();
+  let humanSelection = move;
+  let winner;
   let computerSelection = getComputerChoice();
-  console.log(`You picked ${humanSelection}, Computer picked ${computerSelection}! 
-    ${getWinner(humanSelection, computerSelection)} 
-    Score: ${humanScore} - ${computerScore}`);
+  outputEl.innerText = `You picked ${humanSelection}, Computer picked ${computerSelection}! 
+    ${getWinner(humanSelection, computerSelection)}`;
+  document.getElementById("score").innerText = `Score: ${humanScore} - ${computerScore}`
 }
+
 function getWinner(humanChoice, computerChoice) {
   humanChoice = humanChoice.toLowerCase();
   let result;
@@ -55,9 +71,17 @@ function getWinner(humanChoice, computerChoice) {
 
   if (result === "You win!") {
     humanScore++;
+    winner = "You win!";
   } else if (result === "You lose!") {
     computerScore++;
+    winner = "Computer wins!";
   }
   return(result);
+}
+
+function showWin() {
+  const popup = document.getElementById("chooseMove");
+  popup.innerText = `${winner}
+  Refresh to retry!`;
 }
 

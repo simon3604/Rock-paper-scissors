@@ -1,5 +1,4 @@
 div {
-  border: solid, 1px, black;
   background-color: rgb(47, 47, 49); 
   color: rgb(165, 143, 18);
 }
@@ -41,6 +40,7 @@ body {
 }
 h3 {
   font-size: 60px;
+  text-align: center;
 }
 
 .buttons {
@@ -60,8 +60,14 @@ button {
 }
 
 h4 {
-  font-size: 30px;
+  font-size: 40px;
   margin-top: 0;
   margin-left: 0;
   padding: none;
+  text-align: center;
 }
+
+#output {
+  font-size: 20px;
+}
+
